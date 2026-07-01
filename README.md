@@ -20,6 +20,8 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 ├── AGENTS.md                             # Adapter cho Codex (và chuẩn AGENTS.md chung)
 ├── GEMINI.md                             # Adapter cho Gemini CLI
 ├── .cursor/rules/*.mdc                   # Adapter cho Cursor
+├── .windsurf/rules/*.md                  # Adapter cho Windsurf
+├── .github/copilot-instructions.md       # Adapter cho GitHub Copilot
 └── README.md
 ```
 
@@ -55,11 +57,21 @@ Cursor dùng rule dạng `.cursor/rules/*.mdc` (kích hoạt theo `description`)
 - **Vào project của bạn:** copy thư mục `.cursor/rules/` + `.claude/skills/`, hoặc dán nội dung
   `SKILL.md` thẳng vào file `.mdc`.
 
-### Các tool khác (Windsurf, GitHub Copilot, …)
-Cùng một khuôn mẫu — tạo file "instruction/rule" của tool đó và trỏ về, hoặc dán nội dung
-`.claude/skills/auditing-test-quality/SKILL.md`:
-- **Windsurf:** `.windsurf/rules/auditing-test-quality.md`
-- **GitHub Copilot:** `.github/copilot-instructions.md`
+### Windsurf
+Windsurf dùng rule dạng `.windsurf/rules/*.md` (kích hoạt theo `trigger: model_decision` + `description`).
+- **Trong repo này:** đã có sẵn [`.windsurf/rules/auditing-test-quality.md`](.windsurf/rules/auditing-test-quality.md).
+- **Vào project của bạn:** copy thư mục `.windsurf/rules/` + `.claude/skills/`, hoặc dán nội dung
+  `SKILL.md` thẳng vào file `.md`.
+
+### GitHub Copilot
+Copilot đọc `.github/copilot-instructions.md` làm chỉ dẫn mức repo.
+- **Trong repo này:** đã có sẵn [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
+- **Vào project của bạn:** copy file này + thư mục `.claude/skills/`, hoặc dán nội dung `SKILL.md`
+  thẳng vào file.
+
+### Tool khác
+Cùng một khuôn mẫu — tạo file "instruction/rule" của tool đó rồi trỏ về, hoặc dán thẳng nội dung
+`.claude/skills/auditing-test-quality/SKILL.md`.
 
 ## Nguồn chân lý & cách cập nhật
 
@@ -70,5 +82,6 @@ nên không cần sửa theo. Nếu ở project của bạn bạn *dán thẳng*
 ## Thêm skill mới
 
 1. Tạo `.claude/skills/<tên-skill>/SKILL.md` (có frontmatter `name` + `description`).
-2. Thêm dòng trỏ tới nó trong `AGENTS.md`, `GEMINI.md`, và một file `.cursor/rules/<tên>.mdc`.
+2. Thêm dòng trỏ tới nó trong `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`,
+   và một file rule cho `.cursor/rules/<tên>.mdc` + `.windsurf/rules/<tên>.md`.
 3. Thêm một dòng vào bảng "Skill hiện có" ở trên.
