@@ -4,6 +4,9 @@ Lộ trình dài hạn, tự tiến độ, theo **level năng lực**. Ai cũng 
 người đã có automation có thể **test-out** Level 1 (hoàn thành `LEVEL-CHECKLIST` là
 được vào Level 2). Mọi hands-on chạy trên [sample-project](sample-project/README.md).
 
+> 🧭 **Mới bắt đầu?** Đọc [Hướng dẫn học](HUONG-DAN-HOC.md) trước — cách đi qua lộ trình,
+> dùng skill khi học, và lên level.
+
 Mỗi module theo [khuôn 6 mục](MODULE-TEMPLATE.md): mục tiêu năng lực → vì sao/khi nào
 dùng AI → lý thuyết ngắn → hands-on trên sample → checklist năng lực → capstone áp
 vào dự án thật.
