@@ -17,7 +17,7 @@ vào dự án thật.
 | | [M1.3 Dùng AI coding assistant](level-1-foundation/M1.3-dung-ai-coding-assistant.md) | — | — |
 | | [M1.4 Đánh giá output AI](level-1-foundation/M1.4-danh-gia-output-ai.md) | — | — |
 | | [→ Checklist lên Level 2](level-1-foundation/LEVEL-CHECKLIST.md) | | |
-| **2 · Practitioner** | [M2.1 Requirement → test case](level-2-practitioner/M2.1-phan-tich-requirement-sinh-test-case.md) | `generating-test-cases` | đang phát triển |
+| **2 · Practitioner** | [M2.1 Requirement → test case](level-2-practitioner/M2.1-phan-tich-requirement-sinh-test-case.md) | `generating-test-cases` | **đã có** |
 | | [M2.2 Thiết kế test / charter](level-2-practitioner/M2.2-thiet-ke-test-charter.md) | `designing-test-strategy` | đang phát triển |
 | | [M2.3 Automation có AI hỗ trợ](level-2-practitioner/M2.3-automation-co-ai-ho-tro.md) *(nâng cao)* | `writing-automation-tests` | đang phát triển |
 | | [M2.4 Sinh & quản lý test data](level-2-practitioner/M2.4-sinh-quan-ly-test-data.md) | `generating-test-data` | đang phát triển |

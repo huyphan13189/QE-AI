@@ -14,3 +14,16 @@ hoặc trước khi tin vào một suite đang xanh / coverage cao. **Không** d
 Nguyên tắc cốt lõi: một suite xanh và coverage cao chỉ chứng minh test **CHẠY**, không chứng minh
 test **KIỂM TRA** được gì. Đi theo Process, 7 lenses và danh sách red-flag trong skill; luôn chạy
 suite, truy tìm cả fake/tautological test lẫn khoảng trống rủi ro chưa được test.
+
+## Skill: generating-test-cases
+
+**Khi nào áp dụng:** khi cần sinh / thiết kế test case từ requirement, user story, ticket, hoặc
+spec API/UI bằng AI ("sinh test case cho tính năng này", mở rộng độ phủ), hoặc review một danh sách
+case AI vừa tạo. **Không** dùng để audit test suite tự động sẵn có (dùng `auditing-test-quality`).
+
+**Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/generating-test-cases/SKILL.md`.
+
+Nguyên tắc cốt lõi: AI sinh danh sách case rất nhanh nhưng mặc định lệch happy-path, bịa hành vi
+không có trong spec, và bỏ sót case biên/âm/lỗi. Đi theo Process, bảng coverage dimensions và
+red-flag trong skill; ground trước khi sinh, ép đủ chiều phủ, cắt case bịa/trùng, kiểm chứng lại
+với spec/app thật.

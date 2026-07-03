@@ -11,6 +11,7 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 | Skill | Dùng khi nào |
 |-------|--------------|
 | [`auditing-test-quality`](.claude/skills/auditing-test-quality/SKILL.md) | Audit / đánh giá chất lượng & độ phủ của một test suite hiện có — truy tìm fake test và rủi ro chưa được test. Không dùng để viết test mới. |
+| [`generating-test-cases`](.claude/skills/generating-test-cases/SKILL.md) | Sinh / thiết kế test case từ requirement, user story hoặc spec API/UI bằng AI — ép đủ chiều phủ, cắt case bịa/trùng, kiểm chứng với spec/app thật. |
 
 ## Lộ trình học AI cho Tester
 
