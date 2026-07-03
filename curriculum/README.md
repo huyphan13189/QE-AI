@@ -36,11 +36,17 @@ Hoàn thành checklist năng lực của **mọi module bắt buộc** trong lev
 tổng** cuối level (xem `LEVEL-CHECKLIST.md` mỗi level). Level 3 là nhánh nâng cao,
 phù hợp người đã vững code.
 
+## Tham khảo
+
+- [Skill pack cộng đồng cho QE](tham-khao/skill-packs-cong-dong.md) — danh sách tuyển
+  chọn các bộ skill mã nguồn mở đáng tái dùng + checklist đánh giá & áp dụng an toàn
+  (dùng ở [M3.2](level-3-builder/M3.2-viet-skill-qe-rieng.md)).
+
 ## Trạng thái skill
 
-Các skill ghi *"đang phát triển"* sẽ được viết dần ở giai đoạn sau (mỗi skill một
-vòng thiết kế riêng). Trong lúc đó, ô "Skill liên quan" của module hướng dẫn dùng
-tạm chatbot / AI coding assistant, nên lộ trình **dùng được ngay**.
+Toàn bộ 8 skill trong lộ trình đã được viết xong (ô "Trạng thái skill" = **đã có**).
+Mỗi skill có một bản gốc ở `.claude/skills/<tên>/SKILL.md` + adapter cho các công cụ
+AI khác — xem [README repo](../README.md) để biết cách cài cho từng tool.
 
 Thiết kế đầy đủ:
 [spec](../docs/superpowers/specs/2026-07-03-lo-trinh-ai-cho-tester-design.md).
