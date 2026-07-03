@@ -4,6 +4,19 @@
 M2.3 là nhánh nâng cao (cần chút code) — khuyến khích nhưng không chặn lên level với
 bạn manual.
 
+## Học xong Level 2 bạn làm được gì
+
+Thực chiến: **dùng AI tạo ra sản phẩm test** ở từng công đoạn QE thật:
+
+- **Sinh test case theo rủi ro** — không nhận list happy-path; ép AI phủ biên / negative / error, đánh dấu "assumption" cần xác nhận, truy vết về requirement.
+- **Thiết kế chiến lược / charter test** — ưu tiên theo rủi ro thay vì liệt kê tràn lan.
+- **Sinh test data** — đúng schema, phủ biên / bất hợp lệ / unicode / bulk, tuyệt đối ẩn danh.
+- **Phân tích bug & log với AI** — coi nguyên nhân AI đưa là giả thuyết phải tái hiện, viết bug report chuẩn, làm sạch PII.
+- **Audit chất lượng test** — nhận ra test "luôn xanh" / giả mạo coverage.
+- *(Nâng cao, tùy chọn)* **Viết automation test** — chỉ tin khi đã thấy test FAIL đúng lúc có bug.
+
+> **Ranh giới:** tự chủ toàn bộ vòng đời test hằng ngày với AI — nhưng vẫn là *người dùng* công cụ, chưa *tự xây* công cụ (đó là Level 3 — Builder).
+
 | # | Tiêu chí | Tự đánh giá | Reviewer |
 |---|----------|:-----------:|:--------:|
 | M2.1 | Dùng AI phân tích 1 story: chỉ ra điểm mơ hồ + sinh test case phủ biên/âm, loại case AI bịa | ☐ | ☐ |

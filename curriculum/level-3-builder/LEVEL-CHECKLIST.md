@@ -3,6 +3,17 @@
 Level 3 là **nhánh nâng cao**, phù hợp với người đã vững code. Đạt hết các mục
 (cột **Reviewer** tick) + capstone tổng (chính là M3.4) là hoàn tất lộ trình.
 
+## Học xong Level 3 bạn làm được gì
+
+Từ *người dùng* AI trở thành **người xây công cụ QE bằng AI**:
+
+- **Vận hành AI test tool chuyên dụng** — áp lên dự án thật và nêu được hạn chế thực tế của tool.
+- **Viết skill QE mới đúng chuẩn repo** — SKILL.md hợp lệ + adapter, dùng chung được cho mọi AI tool trong team.
+- **Gọi Claude API tự động hoá công việc QE** — key đọc từ ENV, không hard-code, có xử lý lỗi và validate output.
+- **Dựng pipeline / agent QE end-to-end** — có điểm human-in-the-loop và log, chạy được trên input mẫu.
+
+> **Ranh giới:** hoàn tất lộ trình — bạn không chỉ *dùng* AI mà đã *xây* được công cụ QE riêng cho team.
+
 | # | Tiêu chí | Tự đánh giá | Reviewer |
 |---|----------|:-----------:|:--------:|
 | M3.1 | Áp được 1 AI test tool chuyên dụng lên Toolshop + nêu 2 hạn chế thực tế | ☐ | ☐ |
