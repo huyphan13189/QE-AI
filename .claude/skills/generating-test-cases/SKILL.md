@@ -1,6 +1,6 @@
 ---
 name: generating-test-cases
-description: Use when turning a requirement, user story, ticket, or API/UI spec into test cases with AI help — designing test scenarios, "generate test cases for this feature", expanding coverage, or reviewing an AI-produced case list. Not for auditing an existing automated suite (use auditing-test-quality).
+description: Use when turning a requirement, user story, ticket, or API/UI spec into test cases with AI help — designing test scenarios, "generate test cases for this feature", expanding coverage, or reviewing an AI-produced case list. Not for auditing an existing automated suite (use auditing-test-quality), and not for general prompt-construction technique when the issue is a rambling/unusable prompt rather than coverage (use prompting-for-qe).
 ---
 
 # Generating Test Cases with AI

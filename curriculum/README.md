@@ -13,20 +13,20 @@ vào dự án thật.
 | Level | Module | Skill liên quan | Trạng thái skill |
 |-------|--------|-----------------|------------------|
 | **1 · Foundation** | [M1.1 Tư duy AI cho tester](level-1-foundation/M1.1-tu-duy-ai-cho-tester.md) | — | — |
-| | [M1.2 Prompting cho QE](level-1-foundation/M1.2-prompting-cho-qe.md) | `prompting-for-qe` | đang phát triển |
+| | [M1.2 Prompting cho QE](level-1-foundation/M1.2-prompting-cho-qe.md) | `prompting-for-qe` | **đã có** |
 | | [M1.3 Dùng AI coding assistant](level-1-foundation/M1.3-dung-ai-coding-assistant.md) | — | — |
 | | [M1.4 Đánh giá output AI](level-1-foundation/M1.4-danh-gia-output-ai.md) | — | — |
 | | [→ Checklist lên Level 2](level-1-foundation/LEVEL-CHECKLIST.md) | | |
 | **2 · Practitioner** | [M2.1 Requirement → test case](level-2-practitioner/M2.1-phan-tich-requirement-sinh-test-case.md) | `generating-test-cases` | **đã có** |
-| | [M2.2 Thiết kế test / charter](level-2-practitioner/M2.2-thiet-ke-test-charter.md) | `designing-test-strategy` | đang phát triển |
-| | [M2.3 Automation có AI hỗ trợ](level-2-practitioner/M2.3-automation-co-ai-ho-tro.md) *(nâng cao)* | `writing-automation-tests` | đang phát triển |
-| | [M2.4 Sinh & quản lý test data](level-2-practitioner/M2.4-sinh-quan-ly-test-data.md) | `generating-test-data` | đang phát triển |
-| | [M2.5 Phân tích bug / log / triage](level-2-practitioner/M2.5-phan-tich-bug-log-triage.md) | `analyzing-bugs-and-logs` | đang phát triển |
+| | [M2.2 Thiết kế test / charter](level-2-practitioner/M2.2-thiet-ke-test-charter.md) | `designing-test-strategy` | **đã có** |
+| | [M2.3 Automation có AI hỗ trợ](level-2-practitioner/M2.3-automation-co-ai-ho-tro.md) *(nâng cao)* | `writing-automation-tests` | **đã có** |
+| | [M2.4 Sinh & quản lý test data](level-2-practitioner/M2.4-sinh-quan-ly-test-data.md) | `generating-test-data` | **đã có** |
+| | [M2.5 Phân tích bug / log / triage](level-2-practitioner/M2.5-phan-tich-bug-log-triage.md) | `analyzing-bugs-and-logs` | **đã có** |
 | | [M2.6 Audit chất lượng test suite](level-2-practitioner/M2.6-audit-chat-luong-test-suite.md) | `auditing-test-quality` | **đã có** |
 | | [→ Checklist lên Level 3](level-2-practitioner/LEVEL-CHECKLIST.md) | | |
 | **3 · Builder** | [M3.1 Dùng AI test tool chuyên dụng](level-3-builder/M3.1-dung-ai-test-tool-chuyen-dung.md) | — | — |
-| | [M3.2 Viết skill QE riêng](level-3-builder/M3.2-viet-skill-qe-rieng.md) | `writing-qe-skills` | đang phát triển |
-| | [M3.3 Gọi Claude API build công cụ](level-3-builder/M3.3-goi-claude-api-build-cong-cu.md) | `building-test-tools-with-api` | đang phát triển |
+| | [M3.2 Viết skill QE riêng](level-3-builder/M3.2-viet-skill-qe-rieng.md) | `writing-qe-skills` | **đã có** |
+| | [M3.3 Gọi Claude API build công cụ](level-3-builder/M3.3-goi-claude-api-build-cong-cu.md) | `building-test-tools-with-api` | **đã có** |
 | | [M3.4 Xây agent/pipeline QE](level-3-builder/M3.4-xay-agent-pipeline-qe.md) | — | — |
 | | [→ Checklist hoàn tất lộ trình](level-3-builder/LEVEL-CHECKLIST.md) | | |
 

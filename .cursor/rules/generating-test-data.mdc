@@ -1,0 +1,15 @@
+---
+description: Sinh test data (dữ liệu test) bằng AI cho UI/API/DB — user/record giả, seed data, fixtures, bộ dữ liệu bulk/load, hoặc yêu cầu kiểu "sinh 50 user test". Không dùng để thiết kế test case từ requirement (dùng generating-test-cases).
+globs:
+alwaysApply: false
+---
+
+# Generating Test Data with AI
+
+Khi cần sinh test data bằng AI, ĐỌC và LÀM THEO nguyên văn skill đầy đủ tại
+[.claude/skills/generating-test-data/SKILL.md](../../.claude/skills/generating-test-data/SKILL.md).
+
+Nguyên tắc cốt lõi: AI sinh dữ liệu trông thật rất nhanh, nhưng mặc định chỉ ra giá trị đẹp/happy-path,
+dễ sai lệch schema mà không báo, và dễ bị cám dỗ dùng dữ liệu prod thật cho "giống thật". Dữ liệu test
+tốt phải phủ đủ nhóm hợp lệ/biên/bất hợp lệ/unicode/bulk, được kiểm chứng đúng schema trước khi tin, và
+tuyệt đối 100% synthetic, không chứa PII hay dữ liệu khách hàng thật.

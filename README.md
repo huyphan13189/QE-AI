@@ -12,6 +12,13 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 |-------|--------------|
 | [`auditing-test-quality`](.claude/skills/auditing-test-quality/SKILL.md) | Audit / đánh giá chất lượng & độ phủ của một test suite hiện có — truy tìm fake test và rủi ro chưa được test. Không dùng để viết test mới. |
 | [`generating-test-cases`](.claude/skills/generating-test-cases/SKILL.md) | Sinh / thiết kế test case từ requirement, user story hoặc spec API/UI bằng AI — ép đủ chiều phủ, cắt case bịa/trùng, kiểm chứng với spec/app thật. |
+| [`prompting-for-qe`](.claude/skills/prompting-for-qe/SKILL.md) | Soạn / tinh chỉnh prompt cho tác vụ QE khi output lan man / bịa / không dùng được, hoặc chuẩn hóa prompt thành template. |
+| [`designing-test-strategy`](.claude/skills/designing-test-strategy/SKILL.md) | Lập kế hoạch test / test charter cho một tính năng — ưu tiên theo rủi ro, nêu out-of-scope, không liệt kê tràn lan. |
+| [`writing-automation-tests`](.claude/skills/writing-automation-tests/SKILL.md) | Viết / bảo trì automation test (API/UI) có AI hỗ trợ — bảo đảm test FAIL đúng lúc có bug, selector bền. |
+| [`generating-test-data`](.claude/skills/generating-test-data/SKILL.md) | Sinh test data đa dạng (biên, unicode, bulk) đúng schema và an toàn — không dùng dữ liệu prod. |
+| [`analyzing-bugs-and-logs`](.claude/skills/analyzing-bugs-and-logs/SKILL.md) | Phân tích log / stacktrace để khoanh nguyên nhân, triage, và viết bug report tái hiện được — coi nguyên nhân AI đưa là giả thuyết. |
+| [`writing-qe-skills`](.claude/skills/writing-qe-skills/SKILL.md) | Đóng gói một quy trình QE lặp lại thành skill dùng chung của repo (bản gốc + adapter). |
+| [`building-test-tools-with-api`](.claude/skills/building-test-tools-with-api/SKILL.md) | Xây công cụ QE tự động bằng cách gọi Claude API/SDK — key từ ENV, không hard-code model, có xử lý lỗi. |
 
 ## Lộ trình học AI cho Tester
 
