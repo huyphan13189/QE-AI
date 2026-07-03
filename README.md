@@ -12,6 +12,12 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 |-------|--------------|
 | [`auditing-test-quality`](.claude/skills/auditing-test-quality/SKILL.md) | Audit / đánh giá chất lượng & độ phủ của một test suite hiện có — truy tìm fake test và rủi ro chưa được test. Không dùng để viết test mới. |
 
+## Lộ trình học AI cho Tester
+
+Ngoài bộ skill, repo có **lộ trình đào tạo** giúp tester học & ứng dụng AI vào công
+việc, tổ chức theo level năng lực (Foundation → Practitioner → Builder):
+[curriculum/README.md](curriculum/README.md).
+
 ## Cấu trúc repo
 
 ```
