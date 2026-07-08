@@ -1,5 +1,5 @@
 ---
-description: Viết/sửa e2e test golden-path chạy trình duyệt thật qua backend + DB thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), hoặc khi spec e2e sẵn có bị flaky/chậm ở khâu setup.
+description: Viết/sửa e2e test golden-path chạy trình duyệt thật qua backend + DB thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), khi spec e2e sẵn có bị flaky/chậm ở khâu setup, hoặc khi code đổi cần thêm/sửa e2e.
 globs:
 alwaysApply: false
 ---
@@ -14,4 +14,6 @@ vào đúng trạng thái. Đau nhất ở e2e là khâu setup (state flaky, OAu
 câu assert. Theo đúng spine: reset → seed → auth-bypass → enter (deep-link qua gate rồi drive UI) →
 assert kết quả chính xác trên data tất định. Không automate OAuth/payment/email thật (dùng sandbox/
 test-mode/stub), không seed bằng cách bấm xuyên UI, không `waitForTimeout`. Các endpoint test (reset/
-seed/dev-login) là điều kiện tiên quyết cần backend hỗ trợ.
+seed/dev-login) là điều kiện tiên quyết cần backend hỗ trợ. Khi code đổi: grep spec theo route/label/
+chuỗi assert để sửa spec cũ (đừng để coverage regression âm thầm). Reuse scale theo quy mô suite:
+helper/data-builder → fixtures/`storageState` → POM khi 1 màn có nhiều spec (đừng POM cho 3 spec).

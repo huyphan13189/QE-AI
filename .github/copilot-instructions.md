@@ -106,9 +106,10 @@ ID), luôn có xử lý lỗi + ước lượng token, và validate output như 
 ## Skill: writing-e2e-tests
 
 **Khi nào áp dụng:** khi viết hoặc sửa e2e test golden-path chạy trình duyệt thật qua backend + DB
-thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), hoặc khi spec e2e sẵn có bị
-flaky / chậm ở khâu setup. **Không** dùng để assert một đơn vị API/UI lẻ (dùng
-`writing-automation-tests`) hay để chọn hành trình nào cần phủ (dùng `designing-test-strategy`).
+thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), khi spec e2e sẵn có bị
+flaky / chậm ở khâu setup, hoặc khi code đổi cần thêm/sửa e2e. **Không** dùng để assert một đơn vị
+API/UI lẻ (dùng `writing-automation-tests`) hay để lập kế hoạch/chọn journey nào cần phủ và theo thứ
+tự nào (dùng `planning-e2e-coverage`).
 
 **Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/writing-e2e-tests/SKILL.md`.
 
@@ -116,4 +117,21 @@ Nguyên tắc cốt lõi: độ tin cậy của e2e quyết định TRƯỚC ass
 đúng trạng thái; đau nhất là khâu setup (state flaky, OAuth thật, entry bị gate). Theo spine reset →
 seed → auth-bypass → enter (deep-link qua gate rồi drive UI) → assert chính xác trên data tất định;
 không automate OAuth/payment/email thật (dùng sandbox/test-mode/stub), không seed bằng cách bấm xuyên
-UI, không `waitForTimeout`. Endpoint test (reset/seed/dev-login) cần backend hỗ trợ.
+UI, không `waitForTimeout`. Endpoint test (reset/seed/dev-login) cần backend hỗ trợ. Khi code đổi:
+grep spec theo route/label/chuỗi assert để sửa spec cũ. Reuse scale theo quy mô suite (helper/data-
+builder → fixtures/`storageState` → POM khi 1 màn nhiều spec).
+
+## Skill: planning-e2e-coverage
+
+**Khi nào áp dụng:** khi quyết định codebase cần e2e những gì — lập kế hoạch coverage lần đầu, chọn
+flow/màn hình nào cần phủ và theo thứ tự nào, phân tầng LOW/MEDIUM/HIGH, map flow đã có e2e vs chưa,
+dựng roadmap mở rộng suite. **Không** dùng để viết 1 spec cụ thể (dùng `writing-e2e-tests`) hay đánh
+giá test sẵn có có thực sự test gì không (dùng `auditing-test-quality`).
+
+**Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/planning-e2e-coverage/SKILL.md`.
+
+Nguyên tắc cốt lõi: coverage e2e là roadmap ưu tiên theo rủi ro, không phải "test hết"; sweep codebase
+liệt kê journey → xếp hạng blast-radius × traffic (main flow trước) → baseline map journey ↔ e2e đã
+có → phân tầng LOW (smoke gate làm trước)/MEDIUM/HIGH (hoãn tới khi đáng) → roadmap có điều kiện dừng.
+Tie-breaker: "đánh giá e2e phủ flow/màn hình nào (covered vs chưa)" → dùng bước baseline của skill này;
+"test sẵn có có thực sự bắt lỗi không (fake/tautological)" → dùng `auditing-test-quality`.
