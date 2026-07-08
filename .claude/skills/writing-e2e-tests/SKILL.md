@@ -15,6 +15,8 @@ The spine every golden-path spec follows:
 reset → seed → auth → enter → drive UI → assert visible outcome
 ```
 
+**Prerequisite — you need the backend's cooperation.** A trustworthy e2e suite needs test-only affordances *in the app*: a reset endpoint, seed endpoints, a dev-login. If you can't touch the backend (a black-box third-party service), you can't build this properly — either get those affordances added, or accept a narrower test (real signup + UI-built state) and name the flakiness/speed cost. Don't pretend a black-box e2e is as solid as one with a real harness. Examples below are framework-agnostic in shape but assume Playwright + a SQL database; translate the concretes (`TRUNCATE`, cookie-planting, `build && preview`) to your stack.
+
 ## The trap this skill exists to prevent
 
 Ask AI to "write an end-to-end test for the checkout flow" and it drives the whole thing through the UI from a cold browser — and that spec is slow, flaky, and often can't even run. The default output tends to:
@@ -35,9 +37,9 @@ A suite like this is slow *and* untrustworthy — the two things e2e most needs 
 
 3. **Seed the world over an API/test endpoint, not through the UI.** Add test-only seed endpoints (mounted only outside production) that return the ids you need, wrapped in typed helpers. Don't click through setup, and don't hand-write DB inserts in the spec (see `generating-test-data` for building the data itself).
 
-4. **Bypass the real identity provider.** Add a dev-only login endpoint that mints a session for a given email — guarded twice (not mounted in prod **and** a runtime prod check). Plant the session the way the app cold-boots (e.g. set the session cookie, let the app restore it); grab an access token too for step 5. Never automate the real OAuth screen.
+4. **Bypass every real side-effecting external integration — identity first.** Add a dev-only login endpoint that mints a session for a given email, guarded twice (not mounted in prod **and** a runtime prod check); plant the session the way the app cold-boots (e.g. set the session cookie, let the app restore it) and grab an access token for step 5. Never automate the real OAuth screen. **Same reasoning applies to payments, email/SMS, and third-party APIs** — route them to sandbox/test mode or a stub (a checkout e2e must hit the payment provider's *test* mode with a test card, never charge real money or send real mail). Caveat to state openly: planting a session means the **login UI itself is not exercised** — if logging in *is* the journey under test, that's the one case where you drive the login screen for real instead of bypassing it.
 
-5. **Enter the flow — deep-link past a gate if needed.** If the starting button is gated, use the token to create the entity over the API, then navigate straight to its route; the app loads it like a reload. **But drive the journey itself through the UI** — if you finish it over the API too, you tested the API, not the journey.
+5. **Enter the flow — arrange prerequisites over the API, drive the steps-under-test through the UI.** The rule that resolves "UI or API?": anything the user asked you to *verify* runs through the UI; anything that's merely a *precondition* to reach it is arranged over the API. If the entry is gated, use the token to create the prerequisite entity, then navigate straight to its route; the app loads it like a reload. **Never finish the journey over the API** — if you do, you tested the API, not the journey. (So for "log in, add item, checkout": adding the item and checking out are the steps to verify → UI; a pre-existing product/catalog is a precondition → seed it.)
 
 6. **Assert the exact visible outcome, on deterministic data.** Seed data whose correct path is recognizable (e.g. the right option carries a known label) so you can act and assert precisely instead of clicking blindly and matching a loose regex. Prove the assertion can fail — that discipline lives in `writing-automation-tests`; apply it here.
 
@@ -56,6 +58,7 @@ A suite like this is slow *and* untrustworthy — the two things e2e most needs 
 ## Red flags
 
 - The spec automates the real Google/SSO login screen.
+- The test hits a real payment gateway, sends real email/SMS, or calls a live third-party API instead of test-mode/sandbox/stub.
 - Setup registers/creates everything by clicking through the UI instead of seeding.
 - No `reset` (or equivalent isolation) in `beforeEach`.
 - `page.waitForTimeout(ms)` / `sleep()` anywhere.
@@ -68,5 +71,6 @@ A suite like this is slow *and* untrustworthy — the two things e2e most needs 
 - **Seeding by clicking through the UI** — slow and brittle; seed over a test API and reserve the UI for the flow under test.
 - **Forgetting per-test reset** — the classic "passes locally, flakes in CI" from leaked rows.
 - **Deep-linking over the API and then finishing over the API** — you moved the whole test off the UI and stopped testing the journey.
+- **Silently dropping a step the user asked to verify.** Auth-bypass removes the login screen from coverage; if "can log in" was a stated requirement, say so and cover it separately (or drive login for real when it *is* the journey). Same for any step you shortcut over the API.
 - **Running e2e on every PR** — it's the slow tier; gate the deploy with it and let unit + integration cover PRs.
 - **Asserting something loose because the outcome "isn't determinable"** — usually it is once you seed deterministic data; only weaken the assertion when the result genuinely depends on timing, and then assert the weaker-but-true fact honestly.

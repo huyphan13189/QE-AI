@@ -11,5 +11,6 @@ Khi cần viết hoặc sửa e2e test hành trình đầy đủ, ĐỌC và LÀ
 Nguyên tắc cốt lõi: độ tin cậy của e2e được quyết định TRƯỚC assertion đầu tiên — bởi cách đưa app
 vào đúng trạng thái. Đau nhất ở e2e là khâu setup (state flaky, OAuth thật, entry bị gate), không phải
 câu assert. Theo đúng spine: reset → seed → auth-bypass → enter (deep-link qua gate rồi drive UI) →
-assert kết quả chính xác trên data tất định. Không automate màn OAuth thật, không seed bằng cách bấm
-xuyên UI, không `waitForTimeout`.
+assert kết quả chính xác trên data tất định. Không automate OAuth/payment/email thật (dùng sandbox/
+test-mode/stub), không seed bằng cách bấm xuyên UI, không `waitForTimeout`. Các endpoint test (reset/
+seed/dev-login) là điều kiện tiên quyết cần backend hỗ trợ.

@@ -115,4 +115,5 @@ flaky / chậm ở khâu setup. **Không** dùng để assert một đơn vị A
 Nguyên tắc cốt lõi: độ tin cậy của e2e quyết định TRƯỚC assertion đầu tiên — bởi cách đưa app vào
 đúng trạng thái; đau nhất là khâu setup (state flaky, OAuth thật, entry bị gate). Theo spine reset →
 seed → auth-bypass → enter (deep-link qua gate rồi drive UI) → assert chính xác trên data tất định;
-không automate OAuth thật, không seed bằng cách bấm xuyên UI, không `waitForTimeout`.
+không automate OAuth/payment/email thật (dùng sandbox/test-mode/stub), không seed bằng cách bấm xuyên
+UI, không `waitForTimeout`. Endpoint test (reset/seed/dev-login) cần backend hỗ trợ.
