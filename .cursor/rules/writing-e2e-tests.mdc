@@ -1,0 +1,16 @@
+---
+description: Viết/sửa e2e test golden-path chạy trình duyệt thật qua backend + DB thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), hoặc khi spec e2e sẵn có bị flaky/chậm ở khâu setup.
+globs:
+alwaysApply: false
+---
+
+# Writing E2E Tests
+
+Khi cần viết hoặc sửa e2e test hành trình đầy đủ, ĐỌC và LÀM THEO nguyên văn skill đầy đủ tại
+[.claude/skills/writing-e2e-tests/SKILL.md](../../.claude/skills/writing-e2e-tests/SKILL.md).
+
+Nguyên tắc cốt lõi: độ tin cậy của e2e được quyết định TRƯỚC assertion đầu tiên — bởi cách đưa app
+vào đúng trạng thái. Đau nhất ở e2e là khâu setup (state flaky, OAuth thật, entry bị gate), không phải
+câu assert. Theo đúng spine: reset → seed → auth-bypass → enter (deep-link qua gate rồi drive UI) →
+assert kết quả chính xác trên data tất định. Không automate màn OAuth thật, không seed bằng cách bấm
+xuyên UI, không `waitForTimeout`.

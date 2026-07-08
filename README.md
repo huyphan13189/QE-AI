@@ -19,6 +19,7 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 | [`analyzing-bugs-and-logs`](.claude/skills/analyzing-bugs-and-logs/SKILL.md) | Phân tích log / stacktrace để khoanh nguyên nhân, triage, và viết bug report tái hiện được — coi nguyên nhân AI đưa là giả thuyết. |
 | [`writing-qe-skills`](.claude/skills/writing-qe-skills/SKILL.md) | Đóng gói một quy trình QE lặp lại thành skill dùng chung của repo (bản gốc + adapter). |
 | [`building-test-tools-with-api`](.claude/skills/building-test-tools-with-api/SKILL.md) | Xây công cụ QE tự động bằng cách gọi Claude API/SDK — key từ ENV, không hard-code model, có xử lý lỗi. |
+| [`writing-e2e-tests`](.claude/skills/writing-e2e-tests/SKILL.md) | Viết/sửa e2e test golden-path (browser→API→DB) — spine reset→seed→auth-bypass→enter→assert, deep-link qua entry bị gate, không automate OAuth thật, không flaky. |
 
 ## Lộ trình học AI cho Tester
 

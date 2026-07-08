@@ -105,3 +105,17 @@ code/script/pipeline. **Không** dùng cho AI coding assistant tương tác hay 
 
 Nguyên tắc cốt lõi: key luôn đọc từ ENV, model/tham số tra tài liệu Claude API hiện hành (không
 hard-code ID), luôn có xử lý lỗi + ước lượng token, và validate output như mọi output AI.
+
+## Skill: writing-e2e-tests
+
+**Khi nào áp dụng:** khi viết hoặc sửa e2e test golden-path chạy trình duyệt thật qua backend + DB
+thật — một hành trình người dùng đầy đủ (login, checkout, luồng chính), hoặc khi spec e2e sẵn có bị
+flaky / chậm ở khâu setup. **Không** dùng để assert một đơn vị API/UI lẻ (dùng
+`writing-automation-tests`) hay để chọn hành trình nào cần phủ (dùng `designing-test-strategy`).
+
+**Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/writing-e2e-tests/SKILL.md`.
+
+Nguyên tắc cốt lõi: độ tin cậy của e2e quyết định TRƯỚC assertion đầu tiên — bởi cách đưa app vào
+đúng trạng thái; đau nhất là khâu setup (state flaky, OAuth thật, entry bị gate). Theo spine reset →
+seed → auth-bypass → enter (deep-link qua gate rồi drive UI) → assert chính xác trên data tất định;
+không automate OAuth thật, không seed bằng cách bấm xuyên UI, không `waitForTimeout`.
