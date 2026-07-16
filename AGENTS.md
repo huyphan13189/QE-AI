@@ -138,3 +138,39 @@ liệt kê journey → xếp hạng blast-radius × traffic (main flow trước)
 có → phân tầng LOW (smoke gate làm trước)/MEDIUM/HIGH (hoãn tới khi đáng) → roadmap có điều kiện dừng.
 Tie-breaker: "đánh giá e2e phủ flow/màn hình nào (covered vs chưa)" → dùng bước baseline của skill này;
 "test sẵn có có thực sự bắt lỗi không (fake/tautological)" → dùng `auditing-test-quality`.
+
+## Skill: capturing-ui-sweep
+
+**Khi nào áp dụng:** khi muốn chụp ảnh toàn bộ UI của app để tự review layout lệch/vỡ, thiếu data,
+empty-state xấu, UX cần cải thiện — một lượt visual QA sweep gom ảnh theo tính năng rồi chạy MỘT lượt
+AI soi lỗi. Trigger "chụp UI toàn app", "visual QA sweep", "quét màn hình review UI", "screenshot gom
+nhóm tính năng". **Không** dùng để đánh giá test có bắt lỗi không (dùng `auditing-test-quality`) hay
+lập kế hoạch journey nào cần e2e (dùng `planning-e2e-coverage`) — đây là lượt báo cáo, KHÔNG sửa UI.
+
+**Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/capturing-ui-sweep/SKILL.md`.
+
+Nguyên tắc cốt lõi: sweep chụp mọi feature/state đã curated thành ảnh, gom theo tính năng vào một trang
+index, rồi chạy MỘT lượt AI soi lỗi — và KHÔNG bao giờ đụng code UI. Ba mảnh tách biệt: registry
+(FeatureBlock[], thứ duy nhất phải bảo trì) → runner generic (sinh PNG + manifest.json) → build-index
+(manifest → index.html, nhúng findings). Chụp trên DB test đã reset+seed, không đụng DB dev thật. Ba
+bước tách rời capture → index → review; review là việc của AI (đọc PNG cả 2 viewport, soi tràn/lệch/
+thiếu data/empty-state/spacing/UX), ghi review.json rồi rebuild index; báo người dùng, không tự sửa.
+
+## Skill: managing-seed-data
+
+**Khi nào áp dụng:** khi dựng/mở rộng seed data LOCAL thành thư viện fixtures tái dùng cho cả CLI seed
+dev lẫn e2e — thêm builder/scenario cho dev data của tính năng mới, wire HTTP seed slice cho e2e, hay
+sửa seed bị cộng dồn row mỗi lần chạy. Trigger "thêm seed data", "seed cho màn X", "seed để test UI",
+"làm seed idempotent". **Không** dùng để sinh giá trị data đa dạng (biên/unicode/bulk — dùng
+`generating-test-data`), không cho prod reference data, không để viết e2e spec tiêu thụ seed (dùng
+`writing-e2e-tests`) — đây là hạ tầng seed và vòng đời của nó.
+
+**Phải làm:** ĐỌC và LÀM THEO nguyên văn `.claude/skills/managing-seed-data/SKILL.md`.
+
+Nguyên tắc cốt lõi: feature data nằm ở MỘT thư viện fixtures dùng chung (builder = 1 slice, scenario =
+gộp builder), sau PROD guard fail-closed, và PHẢI idempotent (chạy lại = cùng state, không cộng dồn).
+Bẫy chính: row gắn vào user "POV" (un-prefixed, không bị xoá) sẽ cộng dồn +N mỗi lần chạy nếu không
+mang seed marker hoặc cascade theo parent seed bị xoá — sửa bằng cách gắn marker + thêm 1 dòng
+deleteMany vào clean(). Hai tầng seed đừng trộn: prod reference (ship khi deploy) vs fixtures local.
+Edge data lấy từ palette dùng chung (long/emoji/số biên/empty-state), deterministic. Verify: typecheck
++ smoke test idempotency (chạy 2 lần, đếm bằng nhau).

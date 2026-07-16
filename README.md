@@ -21,6 +21,8 @@ riêng của từng tool chỉ là *adapter mỏng* trỏ về bản gốc đó 
 | [`building-test-tools-with-api`](.claude/skills/building-test-tools-with-api/SKILL.md) | Xây công cụ QE tự động bằng cách gọi Claude API/SDK — key từ ENV, không hard-code model, có xử lý lỗi. |
 | [`writing-e2e-tests`](.claude/skills/writing-e2e-tests/SKILL.md) | Viết/sửa e2e test golden-path (browser→API→DB) — spine reset→seed→auth-bypass→enter→assert, deep-link qua entry bị gate, change-impact khi code đổi, reuse scale (helper→fixtures→POM). |
 | [`planning-e2e-coverage`](.claude/skills/planning-e2e-coverage/SKILL.md) | Lập kế hoạch e2e cho codebase — sweep journey, xếp hạng rủi ro (main flow trước), baseline flow đã có e2e, phân tầng LOW/MED/HIGH, roadmap mở rộng. |
+| [`capturing-ui-sweep`](.claude/skills/capturing-ui-sweep/SKILL.md) | Chụp ảnh toàn bộ UI để tự review layout lệch/vỡ, thiếu data, empty-state xấu, UX — visual QA sweep gom ảnh theo tính năng (registry→runner→index) rồi chạy một lượt AI soi lỗi. Chỉ báo cáo, không sửa UI. |
+| [`managing-seed-data`](.claude/skills/managing-seed-data/SKILL.md) | Dựng/mở rộng seed data local thành thư viện fixtures dùng chung cho CLI seed dev + e2e — builder/scenario, PROD guard fail-closed, và giữ idempotent (bẫy: row của user POV cộng dồn mỗi lần chạy). |
 
 ## Lộ trình học AI cho Tester
 

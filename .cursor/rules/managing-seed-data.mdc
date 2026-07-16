@@ -1,0 +1,20 @@
+---
+description: Dựng/mở rộng seed data local thành thư viện fixtures tái dùng cho cả CLI seed dev lẫn e2e — builder/scenario cho tính năng mới, HTTP seed slice, và giữ seed idempotent (không cộng dồn row mỗi lần chạy).
+globs:
+alwaysApply: false
+---
+
+# Managing Seed Data
+
+Khi cần dựng hoặc mở rộng seed data local (fixtures dùng chung cho CLI seed dev + e2e), ĐỌC và LÀM THEO
+nguyên văn skill đầy đủ tại [.claude/skills/managing-seed-data/SKILL.md](../../.claude/skills/managing-seed-data/SKILL.md).
+
+Nguyên tắc cốt lõi: feature data nằm ở MỘT thư viện fixtures dùng chung (builder = 1 domain slice,
+scenario = gộp builder), sau PROD guard fail-closed, và PHẢI idempotent (chạy lại = cùng state, KHÔNG
+cộng dồn). Bẫy chính: row gắn vào user "POV" (un-prefixed, không bị xoá) sẽ cộng dồn +N mỗi lần chạy
+nếu không mang seed marker HOẶC cascade theo parent seed bị xoá — âm thầm, smoke test đếm mỗi user sẽ
+không bắt được. Sửa: gắn marker column + thêm 1 dòng deleteMany vào clean(), rồi assert count bằng nhau
+sau lần chạy thứ 2. Hai tầng seed đừng trộn: prod reference (ship khi deploy) vs fixtures local
+(stress/dev). Edge data lấy từ palette dùng chung (long/emoji/số biên + 1 entity empty-state),
+deterministic. Sinh giá trị data đa dạng thì dùng generating-test-data; viết e2e spec tiêu thụ seed thì
+dùng writing-e2e-tests. Verify: typecheck + smoke test idempotency (chạy 2 lần, đếm bằng nhau).
